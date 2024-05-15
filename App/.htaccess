@@ -1,4 +1,4 @@
 #Deny from all
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . Router.php [L]
+RewriteRule . index.php [L]
