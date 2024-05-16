@@ -10,5 +10,10 @@
             defined('DATABASE') or define('DATABASE', $_ENV['DATABASE']);
             defined('TYPE_DB') or define('TYPE_DB', $_ENV['TYPE_DB']);
         }
+        public function prePrint($value){
+            echo "<pre>";
+            print_r($value);
+            echo "</pre>";
+        }
     }
     new Environment;

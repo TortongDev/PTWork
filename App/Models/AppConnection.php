@@ -14,28 +14,39 @@ class AppConnection
         self::$type_database = $type_database; 
         switch (self::$type_database) {
             case 'MYSQL':
-                    self::OpenConnectionMysql();
+                    self::openConnectionMysql();
                 break;
             case 'SQL_SERVER':
 
                 break;
             default:
-                # code...
+                
                 break;
         }
     }
-    public function OpenConnectionMysql(){
+    public function openConnectionMysql(){
         try {
-            $connect = new PDO("mysql:host=".self::$hostname."dbname=".self::$dbname,self::$username,self::$password);
+            $connect = new PDO("mysql:host=".self::$hostname.";"."dbname=".self::$dbname,self::$username,self::$password);
             $connect->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            echo "Connection Success.";
             self::$connect = $connect;
         } catch (PDOException $error) {
             echo "Error response => ".$error->getMessage();
         }
     }
-    public function CloseConnection(){
-
+    public function closeConnection(){
+        self::$connect = NULL;
+    }
+    public function __destruct(){
+        self::$connect = NULL;
+    }
+    public function prePrint($value){
+        echo "<pre>";
+        print_r($value);
+        echo "</pre>";
     }
 }
-new AppConnection('MYSQL');
+
+new AppConnection(TYPE_DB);
+
 ?>
