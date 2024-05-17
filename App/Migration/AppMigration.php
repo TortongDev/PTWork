@@ -1,56 +1,36 @@
 <?php
-    require_once dirname(__DIR__)."/Models/AppConnection.php";
-    class AppMigration extends AppConnection {
+    class AppMigration  {
         private string $statement;
         private string $tableName;
+        private string $id;
+        public $statementMigrate;
         public function __construct(){
 
         }
         public function setTableName(string $tableName){
             $this->tableName = $tableName;
         }
+        public function setPrimaryKey(String $id,int $length){
+            $this->id = $id.' '.'int('.$length.') auto_increment primary key,';
+        }
         public function setField(array $arrayField){
-            $statement = "CREATE TABLE $this->tableName ( ";
-            $field = array();
-            $type = array();
-            $capsult = array();
-            $auto_increment = array();
-            foreach ($arrayField as $nameField => $value) {
-                $field[] = array($nameField);
-            }
+            $statement = "CREATE TABLE $this->tableName ( $this->id ";
             foreach ($arrayField as $key => $value) {
-                $type[] = array($value['type']);
+                
+                if(@$value['length'] !=null){
+                    $statement .= $key." ".$value['type']."(".@$value['length']."),";
+                } else {
+                    $statement .= $key." ".@$value['type']."),";
+                }
             }
-            foreach ($arrayField as $key => $value) {
-                $length[] = array($value['length']);
-            }
-            foreach ($arrayField as $key => $value) {
-                $auto_increment[] = array($value['auto_increment']);
-            }
-            array_push($capsult, $field);
-            array_push($capsult, $type);
-            array_push($capsult, $length);
-            array_push($capsult, $auto_increment);
-            $auto_true = "";
-            if($capsult[3][$key][0] == 1){
-                $auto_true = " auto_increment primary Key ";
-            }
-            foreach ($capsult as $key => $value) {
-                $statement .= $capsult[0][$key][0].' '.$capsult[1][$key][0]."(".$capsult[2][$key][0].")" . $auto_true  .",";
-            }
-           $field = substr($statement,0,-1);
-           echo $field;
+            $statement = substr($statement, 0, -1);
+            $this->statementMigrate = $statement;
         }
     }
     $migrate  = new AppMigration();
     $migrate->setTableName("TEST_MIGRATE");
+    $migrate->setPrimaryKey("TABLE_ID",10);
     $migrate->setField(array(
-        "id" => array(
-            "type"          => "int",
-            "length"        => 10,
-            "auto_increment" => true,
-            "primarykey"    => true
-        ),
         "username"      => array(
             "type"      => "varchar",
             "length"    => 255
@@ -58,6 +38,18 @@
         "PASSWORD"      => array(
             "type"      => "varchar",
             "length"    => 255
+        ),
+        "status"      => array(
+            "type"      => "varchar",
+            "length"    => 25
+        ),
+        "create_date"      => array(
+            "type"      => "varchar",
+            "length"    => 25
+        ),
+        "desc"      => array(
+            "type"      => "text"
+            // "length"    => 25
         )
     ))
 ?>
