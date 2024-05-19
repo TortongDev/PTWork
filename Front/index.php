@@ -23,19 +23,21 @@
             </section>
             <section class="aside mt-10">
                 <ul class="aside-nav-link">
-                    <li class="aside-nav-link-header">Header Link</li>
-                    <li><a href="">Lorem, ipsum.</a></li>
-                    <li><a href="">Lorem, ipsum.</a></li>
-                    <li><a href="">Lorem, ipsum.</a></li>
-                    <li><a href="">Lorem, ipsum.</a></li>
-                    <li><a href="">Lorem, ipsum.</a></li>
-                    <li><a href="">Lorem, ipsum.</a></li>
+                    <li class="aside-nav-link-header">จัดการข้อมูล</li>
+                    <li><a href="">เพิ่มทีมงาน</a></li>
+                    <li><a href="">มอบหมายงาน</a></li>
+                    <li><a href="">ดูรายงาน</a></li>
                 </ul>
             </section>
         </aside>
         <section></section>
         <div class="wrapper">
+            <section class="topic">
+                <h2>Dashboard</h2>
+                <h5>หน้าแรก / Dashboard</h5>
+            </section>
             <article class="wrapper-report">
+                
                 <div class="tabber">
                     ประสิทธิภาพกาารทำงานทีมคุณ
                 </div>
