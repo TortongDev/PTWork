@@ -1,7 +1,6 @@
 <?php
     require_once dirname(__DIR__)."/Class/Environment.php";
     require_once dirname(__DIR__)."/Models/AppConnection.php";
-    require_once dirname(__DIR__)."/Migration/AppMigration.php";
     class Model extends AppConnection {
         public static $connect;
         public function __construct(){
@@ -27,6 +26,18 @@
             $inputPassword = $password;
             $encrypt = password_hash($inputPassword , PASSWORD_DEFAULT);
             return $encrypt;
+        }
+        public function validateEmail($inputEmail){
+            $email = filter_var($inputEmail , FILTER_SANITIZE_EMAIL);
+            return $email;
+        }
+        public function validateValue($inputText){
+            $text = filter_var($inputText , FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            return $text;
+        }
+        public function request($inputName){
+            $text = filter_input('POST',$inputName , FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            return $text;
         }
         public function decryptPassword(int $password,string $passwordEncrypt): bool {
             $password = password_verify($password,$passwordEncrypt);

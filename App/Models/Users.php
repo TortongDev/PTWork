@@ -1,11 +1,10 @@
 <?php
 require_once __DIR__.'/Model.php';
 class Users extends Model {
-    private $username;
-    private $password;
-    private $date_ob;
-    
-    private $date_create;
+    public $tableName = "tbusers";
+    public $username;
+    public $password;
+    public $date_create;
     private $email;
     public function __construct(){
         parent::__construct();
@@ -20,14 +19,11 @@ class Users extends Model {
     public function setEmail($email){
         $this->email = $email;
     }
-    public function setDateOB($date_ob){
-        $this->date_ob = $date_ob;
-    }
 
     public function create(){
         $create = $this->insert(
-            "insert into tbusers (username,password,date_ob,email) values (?,?,?,?)",
-            array($this->username,$this->encryptPassword($this->password),$this->date_create,$this->email)
+            "insert into $this->tableName (username,password,email,create_timpstamp,user_status) values (?,?,?,?,?)",
+            array($this->username,$this->encryptPassword($this->password),$this->validateEmail($this->email),$this->date_create,2)
         );
         echo json_encode(array('status','success'));
 

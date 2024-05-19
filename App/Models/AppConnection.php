@@ -1,5 +1,4 @@
 <?php
-    require_once dirname(__DIR__)."/Migration/AppMigration.php";
     require_once dirname(__DIR__)."/class/Environment.php";
 class AppConnection 
 {

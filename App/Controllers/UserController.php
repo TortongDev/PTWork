@@ -7,11 +7,11 @@ class UserController {
     public function store1($user){
         echo $user;
     }
-    public function store($username,$password,$date_ob,$email){
+    public function store($username,$password,$email){
         $user = new Users();
+        echo $username;
         $user->setUsername($username);
         $user->setPassword($password);
-        $user->setDateOB($date_ob);
         $user->setEmail($email);
         $user->create();
     }

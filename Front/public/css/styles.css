@@ -1,0 +1,94 @@
+:root {
+    --header: #E32934;
+    --aside: #fd3643;
+    --tabber: #ee6871;
+    --section-aside: #ee6871;
+}
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html,
+body {
+    font-family: "Kanit", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: azure;
+}
+header {
+    display: flex;
+    align-items: center;
+    padding-inline: 20px;
+    background-color: var(--header);
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+header h3 {
+    color: white;
+}
+main {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+aside {
+    padding-block-start: 65px;
+    min-height: 100vh;
+    background-color: var(--aside);
+    position: fixed;
+    width: 200px;
+}
+section.aside {
+    background-color: var(--section-aside);
+    margin-inline: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+section.aside h3{
+    padding: 5px;
+}
+.aside-nav-link {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.aside-nav-link li {
+    list-style: none;
+    padding: 10px;
+}
+.aside-nav-link-header {
+    background-color: var(--header);
+}
+.mt-10 {
+    margin-top: 1cap;
+}
+.wrapper {
+    padding-block-start: 50px;
+}
+.tabber {
+    margin: 10px;
+    height: 40px;
+    background-color: var(--tabber);
+    display: flex;
+    align-items: center;
+    padding-inline: 10px;
+}
+.text-left {
+    padding: 0;
+    text-align: left;
+}
+a.logout {
+    color: white;
+    background-color: #E32934;
+    padding: 10px;
+}
+
+section.process-efficiency-box {
+    margin: 10px;
+    height: 300px;
+    background-color: aliceblue;
+}
+article.wrapper-report {
+    width: 100%;
+}
