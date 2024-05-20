@@ -4,7 +4,7 @@ class AssignWorkController {
     public function __construct(){
     }
 
-    public function sendRequest(){
+    public function postRequest(){
         $aw = new AssignWork;
         // $aw->setTitle($aw->request("title"));
         // $aw->setText($aw->request("text"));

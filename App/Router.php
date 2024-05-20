@@ -21,6 +21,6 @@
     $router->map( 'POST', '/post', function(){
         require_once dirname(__DIR__)."/App/Controllers/AssignWorkController.php";
         $user = new AssignWorkController();
-        $user->sendRequest();
+        $user->postRequest();
     });
 ?>
