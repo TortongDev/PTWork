@@ -17,14 +17,20 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding-inline: 20px;
+    margin-inline: 20px;
     background-color: var(--header);
     height: 50px;
-    width: 100%;
+    min-width: 100%;
     position: fixed;
     z-index: 1;
+    justify-content: space-between;
 }
 header h3 {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+    color: white;
+}
+header .header-end {
     color: white;
 }
 main {

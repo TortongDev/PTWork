@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Request</title>
+</head>
+<body>
+    <form action="#" method="post" id="postUpload" enctype="multipart/form-data">
+        <input type="hidden" value="title1" name="title">
+        <input type="hidden" value="text2" name="text">
+        <input type="hidden" value="1@'&-=/\" name="job_status">
+        <input type="hidden" value="ass1" name="assignor">
+        <input type="hidden" value="re2" name="recipient">
+        <input type="hidden" value="d1" name="date_start">
+        <input type="hidden" value="d2" name="date_end">
+        <input type="hidden" value="i1" name="importance">
+        <input type="file" name="fileUpload[]" id="fileUpload"  multiple="multiple">
+        <button type="submit">submit</button>
+    </form>
+    <script>
+       
+        document.querySelector('#postUpload').addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const data = new FormData();
+            data.append('fileUpload',document.querySelector('#fileUpload').files[0])       
+
+            fetch('http://localhost/PTWork/App/post',{
+                method: 'post',
+                body: data
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))            
+                .catch(error => console.log(error))
+        })
+    </script>
+</body>
+</html>

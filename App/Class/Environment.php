@@ -9,6 +9,8 @@
             defined('PASSWORD') or define('PASSWORD', $_ENV['PASSWORD']);
             defined('DATABASE') or define('DATABASE', $_ENV['DATABASE']);
             defined('TYPE_DB') or define('TYPE_DB', $_ENV['TYPE_DB']);
+            defined('PATH_URL') or define('PATH_URL', dirname(__DIR__));
+
         }
         public function prePrint($value){
             echo "<pre>";

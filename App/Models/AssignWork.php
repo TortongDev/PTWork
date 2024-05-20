@@ -11,9 +11,15 @@ class AssignWork extends Model {
     public $date_end;
     public $importance;
     public $create_timestamp;
+    private $messageSuccess = "Insert successfully.";
+    private $messageFalse = "Insert False.";
+    
     public function __construct(){
         parent::__construct();
         $this->create_timestamp = date("Y-m-d");
+    }
+    public function __destruct(){
+        
     }
     public function setTitle($title): void{
         $this->title = $title;
